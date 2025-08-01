@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link} from "react-router";
 import ScoreCircle from "~/components/ScoreCircle";
 import {usePuterStore} from "~/lib/puter";
