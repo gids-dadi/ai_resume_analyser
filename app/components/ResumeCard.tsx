@@ -5,7 +5,7 @@ import ScoreCircle from "~/components/ScoreCircle";
 const ResumeCard = ({resume} : {resume:Resume}) => {
     const {id, companyName, jobTitle, feedback, imagePath } = resume;
     return (
-        <Link to={`/resume/${id}`} className="resume-card animate-in fade-in duration-1000">
+        <Link to={`/resume/${id}`} className="resume-card h-full animate-in fade-in duration-1000">
             <div className="resume-card-header">
             <div className="flex flex-col gap-2">
                 <h2 className="!text-black font-bold break-words">{companyName}</h2>
@@ -18,7 +18,7 @@ const ResumeCard = ({resume} : {resume:Resume}) => {
 
             <div className="gradient-border animate-in fade-in duration-1000">
                 <div className="w-full h-full">
-                    <img src={imagePath} alt="Resume-image" className="w-full h-[350] max-sm:h-[200px] object-cover object-top"/>
+                    <img src={imagePath} alt="Resume-image" className="w-full h-[350] max-sm:h-[150px] object-cover object-top"/>
                 </div>
             </div>
         </Link>
