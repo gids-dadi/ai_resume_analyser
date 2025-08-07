@@ -84,7 +84,7 @@ const Resume = () => {
                             <Summary feedback={feedback} />
                             <ATS score={feedback.ATS?.score || 0} suggestions={feedback.ATS?.tips || []} />
                             <Details feedback={feedback} />
-                            <Link to={`/questions/${resumeId}`} className="primary-button w-fit text-xl font-semibold">Likely Interview Questions</Link>
+                            <Link to={`/questions/${resumeId}`} className="primary-button text-center text-xl w-full font-semibold">Likely Interview Questions</Link>
 
                         </div>
                     ) : (
