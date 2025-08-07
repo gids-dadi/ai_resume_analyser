@@ -14,7 +14,6 @@ const Upload = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
     const [file, setFile] = useState<File | null>(null);
-
     const handleFileSelect = (file: File | null) => {
         setFile(file)
     }
@@ -60,7 +59,7 @@ const Upload = () => {
         data.feedback = JSON.parse(feedbackText);
         await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis complete, redirecting...');
-        console.log(data);
+        console.log(data, "Data");
         navigate(`/resume/${uuid}`);
     }
 
@@ -89,7 +88,7 @@ const Upload = () => {
                     {isProcessing ? (
                         <>
                             <h2>{statusText}</h2>
-                            <img src="/images/resume-scan.gif" className="w-full" />
+                            <img src="/images/resume-scan.gif" alt={"Sacanning"} className="w-full" />
                         </>
                     ) : (
                         <h2>Drop your resume for an ATS score and improvement tips</h2>

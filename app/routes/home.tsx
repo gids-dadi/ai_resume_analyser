@@ -8,8 +8,8 @@ import {useEffect, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resumescan" },
-    { name: "description", content: "Smart AI Resume Analyser for your dream Job!" },
+    { title: "ResumeFit" },
+    { name: "description", content: "Smart AI Resume Analyser for how it fit your dream Job!" },
   ];
 }
 
@@ -18,18 +18,16 @@ export default function Home() {
     const { auth, kv } = usePuterStore();
     const [resumes, setResumes] = useState<Resume[]>([]);
     const [loadingResume, setLoadingResume] = useState(false)
-
     useEffect(() => {
         const loadResumes = async() => {
             setLoadingResume(true);
-
             const resumes = (await kv.list('resume:*', true)) as KVItem[];
             const parsedResumes = resumes?.map(resume => JSON.parse(resume.value) as Resume);
             setResumes(parsedResumes);
             setLoadingResume(false);
         }
+        loadResumes();
     }, []);
-
 
     useEffect(() => {
         if(!auth.isAuthenticated) navigate("/auth?next=/");
@@ -44,7 +42,11 @@ export default function Home() {
                   !loadingResume && resumes.length === 0 ? (
                       <>
                       <h2>No Resume has been uploaded. Get started by uploading a resume for feedback</h2>
-                      <button className="primary-button" onClick={() => navigate('/upload')}>Upload Resume</button>
+                          <div className="flex  w-full gap-10 mt-10 items-center justify-center">
+                          <img src="/images/resume_03.png" alt="Scanning" className="w-[200px] h-auto" />
+                          <img src="/images/resume_02.png" alt="Scanning" className="w-[200px] h-auto" />
+                          <img src="/images/resume_01.png" alt="Scanning" className="w-[200px] h-auto" />
+                          </div>
                       </>
                   ): (
             <h2>Review your applications and check AI-powered feedback</h2>
@@ -54,7 +56,7 @@ export default function Home() {
             {
                 loadingResume && (
                     <div className="flex flex-col items-center justify-center gap-4">
-                        <img src="/images/resume-scan-2.gif" className="w-[200px]" />
+                        <img src="/images/resume-scan-2.gif" alt="Scanning" className="w-[200px]" />
                     </div>
                 )
             }
@@ -67,7 +69,6 @@ export default function Home() {
                       }
                   </div>
               )}
-
             {
                 !loadingResume && resumes?.length === 0 && (
                     <div className="flex flex-col items-center justify-center gap-4 mt-10">

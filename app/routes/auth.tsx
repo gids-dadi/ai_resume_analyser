@@ -9,19 +9,19 @@ export const meta = () =>([
 
 const Auth = () => {
     const location = useLocation();
-    const next = location.search.split('next=')[1];
+    const next = location.search.split('next=')[1]
     const navigate = useNavigate();
     const { isLoading, auth } = usePuterStore();
 
     useEffect(() => {
-        if(auth.isAuthenticated) navigate(next);
+        if(auth.isAuthenticated) navigate(next || "/");
     }, [auth.isAuthenticated, next]);
 
     return (
-        <div className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-center flex items-center justify-center">
-          <div className="gradient-border shadow-lg">
-              <section className="flex flex-col gap-8 bg-white rounded-2xl p-10">
-                  <div className="flex flex-col gap-2 items-center text-center">
+        <div className=" h-screen bg-[url('/images/bg-auth.svg')] size-full bg-cover flex items-center justify-center border-4">
+          <div className="gradient-border shadow-lg ">
+              <section className=" gap-8 bg-white rounded-2xl p-10 h-full flex flex-col items-center justify-centerfull">
+                  <div className="flex min-h-full flex-col gap-2 items-center text-center">
                       <h1>Welcome</h1>
                       <h2>Login to continue your job search journey</h2>
                   </div>

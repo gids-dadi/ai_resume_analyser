@@ -48,4 +48,8 @@ interface Feedback {
             explanation: string;
         }[];
     };
+    likelyInterviewQuestions: {
+        question: string;
+        answer: string;
+    }[]
 }

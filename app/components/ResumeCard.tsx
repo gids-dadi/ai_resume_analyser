@@ -17,8 +17,6 @@ const ResumeCard = ({resume} : {resume:Resume}) => {
             setResumeUrl(url)
         }
     }, []);
-
-
     return (
         <Link to={`/resume/${id}`} className="resume-card h-full animate-in fade-in duration-1000">
             <div className="resume-card-header">
@@ -31,8 +29,6 @@ const ResumeCard = ({resume} : {resume:Resume}) => {
                 <ScoreCircle score={feedback.overallScore}/>
             </div>
             </div>
-
-
             {
                 resumeUrl && (
             <div className="gradient-border animate-in fade-in duration-1000">
